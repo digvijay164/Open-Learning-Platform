@@ -1,25 +1,25 @@
 {
-  "name": "open-learning-platform",
+  "name": "olp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^5.0.8"
+    "dev": "node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.js --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
-    "dompurify": "^3.0.8",
-    "esbuild": "^0.19.11",
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
     "gray-matter": "^4.0.3",
-    "isomorphic-dompurify": "^2.2.0",
-    "marked": "^11.1.1",
-    "mdx-bundler": "^10.0.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "three": "^0.160.0"
+    "sirv": "^2.0.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "vite": "^5.0.10"
   }
 }
